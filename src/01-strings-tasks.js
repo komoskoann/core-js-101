@@ -281,8 +281,23 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const str1 = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
+  const clubs = 0;
+  const diamonds = 13;
+  const hearts = 13 * 2;
+  const spades = 13 * 3;
+  let result = 0;
+  if (value[value.length - 1] === '♣') {
+    result = clubs;
+  } else if (value[value.length - 1] === '♦') {
+    result = diamonds;
+  } else if (value[value.length - 1] === '♥') {
+    result = hearts;
+  } else if (value[value.length - 1] === '♠') {
+    result = spades;
+  }
+  return str1.indexOf(value.slice(0, [value.length - 1])) + result;
 }
 
 
