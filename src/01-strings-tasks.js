@@ -202,8 +202,17 @@ function extractEmails(str) {
  *             '└──────────┘\n'
  *
  */
-function getRectangleString(/* width, height */) {
-  throw new Error('Not implemented');
+function getRectangleString(width, height) {
+  const topLeftSymbol = '\u250C';
+  const topRightSymbol = '\u2510';
+  const bottomLeftSymbol = '\u2514';
+  const bottomRightSymbol = '\u2518';
+  const horizontalSymbol = '\u2500';
+  const verticalSymbol = '\u2502';
+  const topStr = `${topLeftSymbol + horizontalSymbol.repeat(width - 2) + topRightSymbol}\n`;
+  const bottomStr = `${bottomLeftSymbol + horizontalSymbol.repeat(width - 2) + bottomRightSymbol}\n`;
+  const middleStr = `${verticalSymbol + ' '.repeat(width - 2) + verticalSymbol}\n`.repeat(height - 2);
+  return topStr + middleStr + bottomStr;
 }
 
 
@@ -223,8 +232,11 @@ function getRectangleString(/* width, height */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const b = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  const result = str.replace(/[a-z]/gi, (c) => b[a.indexOf(c)]);
+  return result;
 }
 
 /**
@@ -240,8 +252,8 @@ function encodeToRot13(/* str */) {
  *   isString('test') => true
  *   isString(new String('test')) => true
  */
-function isString(/* value */) {
-  throw new Error('Not implemented');
+function isString(value) {
+  return typeof value === 'string' || value instanceof String;
 }
 
 
