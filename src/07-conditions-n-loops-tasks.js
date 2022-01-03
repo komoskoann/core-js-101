@@ -60,8 +60,8 @@ function getFactorial(/* n */) {
  *   5,10  =>  45 ( = 5+6+7+8+9+10 )
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
-function getSumBetweenNumbers(/* n1, n2 */) {
-  throw new Error('Not implemented');
+function getSumBetweenNumbers(n1, n2) {
+  return Array(n2 - n1 + 1).fill().map((_, ind) => n1 + ind).reduce((acc, el) => +acc + +el, 0);
 }
 
 
@@ -80,8 +80,16 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  const arr = [a, b, c];
+  arr.sort((el1, el2) => el2 - el1);
+  let triangle = false;
+  if (a === b && a === c && b === c) {
+    triangle = true;
+  } else if (arr[0] ** 2 === arr[1] ** 2 + arr[2] ** 2) {
+    triangle = true;
+  }
+  return triangle;
 }
 
 
@@ -208,8 +216,8 @@ function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
  * 'rotator' => 'rotator'
  * 'noon' => 'noon'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 
@@ -225,8 +233,8 @@ function reverseString(/* str */) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  return +`${num}`.split('').reverse().join('');
 }
 
 
